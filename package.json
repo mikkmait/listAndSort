@@ -1,0 +1,19 @@
+{
+  "name": "04-20_listandsort",
+  "version": "0.0.0",
+  "description": "creating a list and sorting it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikkmait/listAndSort.git"
+  },
+  "author": "Mikk-Mait Kivi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikkmait/listAndSort/issues"
+  },
+  "homepage": "https://github.com/mikkmait/listAndSort#readme"
+}
