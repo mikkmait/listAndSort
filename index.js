@@ -8,8 +8,7 @@ const tfoot = document.createElement('tfoot')
 const buttons = document.createElement('div')
 container.appendChild(table)
 container.appendChild(buttons)
-buttons.className = "buttons"
-let positions = []
+let positions = ["Show ALL"]
 let positionsUnique = []
 
 // !! Function to make the table headings
@@ -24,15 +23,11 @@ columns.forEach(column => {
     tbody.innerHTML = ''
     if (columnID === "fullname") {
       employees.sort((a, b) => {
-        const aFull = a.last + " " + a.first
-        const bFull = b.last + " " + b.first
-        return aFull.localeCompare(bFull)
+        return (a.last + a.first).localeCompare(b.last + b.first)
       })
     } else if (columnID === "position") {
       employees.sort((a, b) => {
-        const aPosition = a.position
-        const bPosition = b.position
-        return aPosition.localeCompare(bPosition)
+        return a.position.localeCompare(b.position)
       })
     } else if (columnID === "salary") {
       employees.sort((a, b) => a.salary < b.salary ? 1 : a.salary > b.salary ? -1 : 0)
@@ -77,19 +72,8 @@ positionsUnique.forEach(position => {
     const allEmployees = document.getElementsByClassName('employee')
     for (let i = 0; i < allEmployees.length; i++) {
       allEmployees[i].style.display = 'none'
-    }
-    const buttonEmployees = document.getElementsByClassName(position)
-    for (let i = 0; i < buttonEmployees.length; i++) {
-      buttonEmployees[i].style.display = ''
+      if (allEmployees[i].classList.contains(position)) {allEmployees[i].style.display = ''}
+      else if (position === 'Show ALL') {allEmployees[i].style.display = ''}
     }
   })
 })
-const showAll = document.createElement('button')
-showAll.innerText = "Show all"
-showAll.addEventListener('click', () => {
-  const allEmployees = document.getElementsByClassName('employee')
-  for (let i = 0; i < allEmployees.length; i++) {
-    allEmployees[i].style.display = ''
-  }
-})
-buttons.appendChild(showAll)
