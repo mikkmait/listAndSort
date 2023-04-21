@@ -49,8 +49,8 @@ function populateTable() {
       `
     tbody.appendChild(tr)
   })
-  positionsUnique = [...new Set(positions)]
   table.appendChild(tbody)
+  positionsUnique = [...new Set(positions)]
 }
 populateTable()
 
