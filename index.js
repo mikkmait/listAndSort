@@ -11,25 +11,24 @@ container.appendChild(buttons)
 let positions = ["Show ALL"]
 let positionsUnique = []
 
-// !! Function to make the table headings
+// !! Function to make the table headings and sort by columns
 const columns = ["Full name", "Position", "Salary"]
 columns.forEach(column => {
   const th = document.createElement('th')
   th.innerHTML = column
-  const columnID = column.split(' ').join('').toLowerCase()
-  th.id = columnID
+  th.id = column.split(' ').join('').toLowerCase()
   thead.appendChild(th)
   th.addEventListener('click', () => {
     tbody.innerHTML = ''
-    if (columnID === "fullname") {
+    if (th.id === "fullname") {
       employees.sort((a, b) => {
         return (a.last + a.first).localeCompare(b.last + b.first)
       })
-    } else if (columnID === "position") {
+    } else if (th.id === "position") {
       employees.sort((a, b) => {
         return a.position.localeCompare(b.position)
       })
-    } else if (columnID === "salary") {
+    } else if (th.id === "salary") {
       employees.sort((a, b) => a.salary < b.salary ? 1 : a.salary > b.salary ? -1 : 0)
     }
     populateTable()
@@ -40,18 +39,18 @@ table.appendChild(thead)
 // !! Function to populate the table
 function populateTable() {
   employees.forEach(employee => {
-  const tr = document.createElement('tr')
-  tr.classList.add(employee.position, 'employee')
-  positions.push(employee.position)
-  tr.innerHTML = `
-    <td> ${employee.first} ${employee.last}</td>
-    <td> ${employee.position} </td>
-    <td> ${employee.salary} </td>
-    `
-  tbody.appendChild(tr)
+    const tr = document.createElement('tr')
+    tr.classList.add(employee.position, 'employee')
+    positions.push(employee.position)
+    tr.innerHTML = `
+      <td> ${employee.first} ${employee.last}</td>
+      <td> ${employee.position} </td>
+      <td> ${employee.salary} </td>
+      `
+    tbody.appendChild(tr)
   })
   positionsUnique = [...new Set(positions)]
-table.appendChild(tbody)
+  table.appendChild(tbody)
 }
 populateTable()
 
