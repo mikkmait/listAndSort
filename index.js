@@ -84,12 +84,12 @@ positionsUnique.forEach(position => {
     }
   })
 })
-const button = document.createElement('button')
-button.innerText = "Show all"
-button.addEventListener('click', () => {
+const showAll = document.createElement('button')
+showAll.innerText = "Show all"
+showAll.addEventListener('click', () => {
   const allEmployees = document.getElementsByClassName('employee')
   for (let i = 0; i < allEmployees.length; i++) {
     allEmployees[i].style.display = ''
   }
 })
-buttons.appendChild(button)
+buttons.appendChild(showAll)
